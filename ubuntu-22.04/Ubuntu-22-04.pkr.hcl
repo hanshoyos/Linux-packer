@@ -24,12 +24,11 @@ boot_wait = "10s"
       type              = "scsi"
   }
 
-  http_directory          = "http"
+  http_directory          = "ubuntu22.04/http"
   cloud_init              = true
   cloud_init_storage_pool = "${var.proxmox_iso_storage}"
   communicator            = "ssh"
   cores                   = "${var.vm_cpu_cores}"
-  
   insecure_skip_tls_verify = "${var.proxmox_skip_tls_verify}"
   iso_file                 = "${var.iso_file}"
   memory                   = "${var.vm_memory}"
