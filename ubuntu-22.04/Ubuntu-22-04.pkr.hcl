@@ -39,9 +39,9 @@ source "proxmox-iso" "linux" {
   username             = "${var.proxmox_username}"
   vm_name              = "${var.vm_name}"
   ssh_password         = "${var.ssh_password}"
-  ssh_timeout          = "20m" #new
+  ssh_timeout          = "50m" #new
   ssh_username         = "${var.ssh_username}"
-  task_timeout         = "40m" # New
+  task_timeout         = "60m" # New
   unmount_iso          = true
 
 boot_command = [
