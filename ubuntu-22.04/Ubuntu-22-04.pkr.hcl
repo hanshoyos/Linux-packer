@@ -10,8 +10,8 @@ packer {
 source "proxmox-iso" "linux" {
 additional_iso_files {
     cd_files = [
-      "./server/meta-data",
-      "./server/user-data"
+      "./http/meta-data",
+      "./http/user-data"
       ]
       cd_label = "cidata"
       iso_storage_pool = "local"
