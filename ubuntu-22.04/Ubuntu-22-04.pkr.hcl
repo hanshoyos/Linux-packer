@@ -50,7 +50,7 @@ source "proxmox-iso" "linux" {
 
 
 build {
-  sources = ["source.proxmox.linux"]
+  sources = ["source.proxmox-iso.linux"]
 
   provisioner "shell" {
     inline = ["while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done"]
