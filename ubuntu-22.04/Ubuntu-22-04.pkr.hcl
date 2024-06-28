@@ -56,7 +56,7 @@ additional_iso_files {
 
 boot_command = [
   "c<wait>", 
-  "linux /casper/vmlinuz autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/22.04/' ", 
+  "linux /casper/vmlinuz autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/' ", 
   "<enter><wait5s>", 
   "initrd /casper/initrd<enter><wait5>", 
   "boot<enter><wait5>"
