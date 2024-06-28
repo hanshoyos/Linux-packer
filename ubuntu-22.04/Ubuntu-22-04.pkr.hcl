@@ -8,15 +8,6 @@ packer {
 }
 
 source "proxmox-iso" "linux" {
-additional_iso_files {
-    cd_files = [
-      "./http/meta-data",
-      "./http/user-data"
-      ]
-      cd_label = "cidata"
-      iso_storage_pool = "local"
-      unmount = true
-     }
 
   disks {
       disk_size         = "${var.vm_disk_size}"
@@ -52,7 +43,6 @@ additional_iso_files {
   ssh_username         = "${var.ssh_username}"
   task_timeout         = "40m" # New
   unmount_iso          = true
-  scsi_controller      = "virtio-scsi-single"
 
 boot_command = [
   "c<wait>", 
