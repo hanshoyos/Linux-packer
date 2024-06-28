@@ -3,24 +3,31 @@ autoinstall:
   version: 1
   locale: en_US
   keyboard:
-    layout: us
-  ssh:
+    layout: en
+    variant: us
+storage:
+    layout:
+    name: lvm
+identity:
+    hostname: ubuntu
+    username: hhoyos
+    password: "P@ssword"
+ssh:
     install-server: true
     allow-pw: true
-  packages:
+swap:
+    size: 4000
+user-data:
+    disable_root: false
+packages:
     - qemu-guest-agent
-  storage:
-    layout:
-      name: direct
-    swap:
-      size: 4000
-  user-data:
-    package_upgrade: true
-    timezone: Europe/Paris
-    users:
-      - name: hhoyos
-        passwd: P@ssword
-        groups: [adm, cdrom, dip, plugdev, lxd, sudo]
-        lock-passwd: false
-        sudo: ALL=(ALL) NOPASSWD:ALL
-        shell: /bin/bash
+#users:
+ #   - name: hhoyos
+  #  passwd: P@ssword
+   # groups: [adm, cdrom, dip, plugdev, lxd, sudo]
+    #lock-passwd: false
+    #sudo: ALL=(ALL) NOPASSWD:ALL
+    #shell: /bin/bash
+  late-commands:
+    - 'sed -i "s/dhcp4: true/&\n      dhcp-identifier: mac/" /target/etc/netplan/00-installer-config.yaml'
+    - echo 'hhoyos ALL=(ALL) NOPASSWD:ALL' > /target/etc/sudoers.d/hhoyos
