@@ -16,7 +16,7 @@ source "proxmox-iso" "linux" {
   "initrd /casper/initrd<enter><wait>", 
   "boot<enter><wait>"
 ]
-boot_wait    = "5s"
+boot_wait    = "20s"
 
   disks {
       disk_size         = "${var.vm_disk_size}"
