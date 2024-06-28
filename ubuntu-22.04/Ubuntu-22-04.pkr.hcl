@@ -24,7 +24,7 @@ boot_wait = "10s"
       type              = "scsi"
   }
 
-  http_directory          = "ubuntu22.04/http"
+  http_directory          = "http"
   cloud_init              = true
   cloud_init_storage_pool = "${var.proxmox_iso_storage}"
   communicator            = "ssh"
