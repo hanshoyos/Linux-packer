@@ -59,11 +59,10 @@ build {
   provisioner "shell" {
     inline = ["while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done"]
   }
-}
 
-post-processor "proxmox" {
-  only = ["proxmox-iso.linux"]
-  action = "template"
-  template_name = "${var.vm_name}"
-  vm_id = "${var.vm_id}"
+  post-processor "proxmox" {
+    action = "template"
+    template_name = "${var.vm_name}"
+    vm_id = "${var.vm_id}"
+  }
 }
