@@ -8,11 +8,12 @@ packer {
 }
 
 source "proxmox-iso" "linux" {
+
   disks {
-    disk_size         = "${var.vm_disk_size}"
-    format            = "${var.vm_disk_format}"
-    storage_pool      = "${var.proxmox_vm_storage}"
-    type              = "scsi"
+      disk_size         = "${var.vm_disk_size}"
+      format            = "${var.vm_disk_format}"
+      storage_pool      = "${var.proxmox_vm_storage}"
+      type              = "scsi"
   }
 
   http_directory          = "http"
@@ -43,15 +44,16 @@ source "proxmox-iso" "linux" {
   task_timeout         = "60m" # New
   unmount_iso          = true
 
-  boot_command = [
-    "c<wait>", 
-    "linux /casper/vmlinuz autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/' ", 
-    "<enter><wait5s>", 
-    "initrd /casper/initrd<enter><wait5>", 
-    "boot<enter><wait5>"
-  ]
-  boot_wait = "10s"
+boot_command = [
+  "c<wait>", 
+  "linux /casper/vmlinuz autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/' ", 
+  "<enter><wait5s>", 
+  "initrd /casper/initrd<enter><wait5>", 
+  "boot<enter><wait5>"
+]
+boot_wait = "10s"
 }
+
 
 build {
   sources = ["source.proxmox-iso.linux"]
@@ -60,9 +62,4 @@ build {
     inline = ["while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done"]
   }
 
-  post-processor "proxmox" {
-    action = "template"
-    template_name = "${var.vm_name}"
-    vm_id = "${var.vm_id}"
-  }
 }
