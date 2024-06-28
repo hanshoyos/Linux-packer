@@ -8,14 +8,15 @@ packer {
 }
 
 source "proxmox-iso" "linux" {
-  boot_command = [
-  "c<wait>", 
-  "linux /casper/vmlinuz autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/22.04/' ", 
-  "<enter><wait5s>", 
-  "initrd /casper/initrd<enter><wait5>", 
-  "boot<enter><wait5>"
-]
-boot_wait = "10s"
+additional_iso_files {
+    cd_files = [
+      "./server/meta-data",
+      "./server/user-data"
+      ]
+      cd_label = "cidata"
+      iso_storage_pool = "local"
+      unmount = true
+     }
 
   disks {
       disk_size         = "${var.vm_disk_size}"
@@ -51,6 +52,16 @@ boot_wait = "10s"
   ssh_username         = "${var.ssh_username}"
   task_timeout         = "40m" # New
   unmount_iso          = true
+  scsi_controller      = "virtio-scsi-single"
+
+boot_command = [
+  "c<wait>", 
+  "linux /casper/vmlinuz autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/22.04/' ", 
+  "<enter><wait5s>", 
+  "initrd /casper/initrd<enter><wait5>", 
+  "boot<enter><wait5>"
+]
+boot_wait = "10s"
 }
 
 
