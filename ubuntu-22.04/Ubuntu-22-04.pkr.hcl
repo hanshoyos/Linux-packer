@@ -7,16 +7,15 @@ packer {
   }
 }
 
-
 source "proxmox-iso" "linux" {
   boot_command = [
-  "c", 
-  "linux /casper/vmlinuz autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/' ", 
-  "<enter><wait>", 
-  "initrd /casper/initrd<enter><wait>", 
-  "boot<enter><wait>"
+  "c"<wait>, 
+  "linux /casper/vmlinuz autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/22.04/' ", 
+  "<enter><wait5s>", 
+  "initrd /casper/initrd<enter><wait5>", 
+  "boot<enter><wait5>"
 ]
-boot_wait = "5s"
+boot_wait = "10s"
 
   disks {
       disk_size         = "${var.vm_disk_size}"
