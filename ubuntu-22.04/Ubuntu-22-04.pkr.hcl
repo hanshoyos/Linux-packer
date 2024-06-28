@@ -9,12 +9,6 @@ packer {
 
 
 source "proxmox-iso" "linux" {
-cd_files = [
-    "./http/meta-data",
-    "./http/user-data"
-    ]
-  cd_label = "cidata"
-  boot_wait = "5s"
   boot_command = [
   "c", 
   "linux /casper/vmlinuz autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/' ", 
@@ -22,6 +16,7 @@ cd_files = [
   "initrd /casper/initrd<enter><wait>", 
   "boot<enter><wait>"
 ]
+boot_wait = "5s"
 
   disks {
       disk_size         = "${var.vm_disk_size}"
