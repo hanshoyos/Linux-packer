@@ -9,7 +9,7 @@ packer {
 
 source "proxmox-iso" "linux" {
   boot_command = [
-  "c"<wait>, 
+  "c<wait>", 
   "linux /casper/vmlinuz autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/22.04/' ", 
   "<enter><wait5s>", 
   "initrd /casper/initrd<enter><wait5>", 
