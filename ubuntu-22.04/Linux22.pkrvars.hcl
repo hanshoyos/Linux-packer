@@ -1,10 +1,10 @@
 ssh_password         = "ubuntu" #new
 ssh_username         = "hhoyos" #new
-vm_name              = "Linux"
+vm_name              = "Ubuntu-22.04_cloudinit"
 template_description = "discription"   
 iso_file              = "local:iso/ubuntu-22.iso"
 vm_cpu_cores          = "4"
 vm_memory             = "5000"
-vm_disk_size          = "80G"
+vm_disk_size          = "100G"
 vm_sockets            = "1"
 vm_disk_format        = "raw"
