@@ -39,7 +39,6 @@ source "proxmox" "linux" {
   ssh_password         = "${var.ssh_password}"
   ssh_timeout          = "20m" #new
   ssh_username         = "${var.ssh_username}"
-  vm_id                = "${var.proxmox_vm_id}" #new
   task_timeout         = "40m" # New
   unmount_iso          = true
 }
