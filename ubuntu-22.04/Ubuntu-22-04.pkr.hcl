@@ -11,12 +11,12 @@ packer {
 source "proxmox-iso" "linux" {
   boot_command = [
   "c", 
-  "linux /casper/hwe-vmlinuz autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/' ", 
+  "linux /casper/vmlinuz autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/' ", 
   "<enter><wait>", 
-  "initrd /casper/hwe-initrd<enter><wait>", 
+  "initrd /casper/initrd<enter><wait>", 
   "boot<enter><wait>"
 ]
-boot_wait    = "10s"
+boot_wait    = "5s"
 
   disks {
       disk_size         = "${var.vm_disk_size}"
