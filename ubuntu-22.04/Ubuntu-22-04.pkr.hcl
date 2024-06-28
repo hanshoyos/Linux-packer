@@ -1,7 +1,12 @@
-variable "proxmox_template_name" {
-  type    = string
-  default = "ubuntu-22.04"
+packer {
+  required_plugins {
+    proxmox = {
+      version = ">= 1.1.2"
+      source  = "github.com/hashicorp/proxmox"
+    }
+  }
 }
+
 
 source "proxmox" "linux" {
   boot_command = ["c", "linux /casper/vmlinuz --- autoinstall ds='nocloud-net;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/' ", "<enter><wait>", "initrd /casper/initrd<enter><wait>", "boot<enter>"]
