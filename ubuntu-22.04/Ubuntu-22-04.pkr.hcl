@@ -15,6 +15,7 @@ source "proxmox-iso" "linux" {
       storage_pool      = "${var.proxmox_vm_storage}"
       type              = "scsi"
   }
+  unmount_iso          = true
 
   http_directory          = "http"
   cloud_init              = true
@@ -42,7 +43,6 @@ source "proxmox-iso" "linux" {
   ssh_timeout          = "50m" #new
   ssh_username         = "${var.ssh_username}"
   task_timeout         = "60m" # New
-  unmount_iso          = true
 
 boot_command = [
   "c<wait>", 
