@@ -107,8 +107,9 @@ download_iso_files_proxmox_menu() {
   echo "2) Download Virtio ISO"
   echo "3) Download Windows 10 ISO"
   echo "4) Download Windows Server 2019 ISO"
-  echo "5) Back to main menu"
-  read -p "Enter choice [1-5]: " sub_choice
+  echo "5) Download Ubuntu 22.04 ISO"
+  echo "6) Back to main menu"
+  read -p "Enter choice [1-6]: " sub_choice
   case $sub_choice in
     1) download_all_iso_files_proxmox ;;
     2) download_specific_iso_file_proxmox "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso" "virtio-win.iso" ;;
