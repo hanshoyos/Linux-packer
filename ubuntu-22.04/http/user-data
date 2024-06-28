@@ -19,7 +19,7 @@ autoinstall:
     timezone: Europe/Paris
     users:
       - name: hhoyos
-        passwd: $6$xyz$1D0kz5pThgRWqxWw6JaZy.6FdkUCSRndc/PMtDr7hMK5mSw7ysChRdlbhkX83PBbNBpqXqef3sBkqGw3Rahs..
+        passwd: P@ssw0rd
         groups: [adm, cdrom, dip, plugdev, lxd, sudo]
         lock-passwd: false
         sudo: ALL=(ALL) NOPASSWD:ALL
